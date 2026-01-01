@@ -61,7 +61,6 @@ header h1 {
   font-weight: 700;
   color: #58a6ff;
   padding: 15px 8%;
-  cursor: default;
 }
 nav ul {
   list-style: none;
@@ -149,13 +148,13 @@ section {
 .about-text p {
   line-height: 1.55;
 }
-.language-boxes, .mc-boxes, .server-boxes {
+.language-boxes {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
 }
-.language-box, .mc-box, .server-box {
+.language-box {
   background: rgba(22, 27, 34, 0.55);
   border: 1px solid rgba(88,166,255,0.2);
   border-radius: 8px;
@@ -166,25 +165,15 @@ section {
   font-size: 0.9em;
   min-width: fit-content;
 }
-.language-box:hover, .mc-box:hover, .server-box:hover {
+.language-box:hover {
   transform: translateY(-4px);
   border-color: #58a6ff;
   background: rgba(22, 27, 34, 0.75);
 }
-.language-box h3, .mc-box h3, .server-box h3 {
+.language-box h3 {
   color: #58a6ff;
   font-size: 1em;
   font-weight: 600;
-}
-.sub-section {
-  margin-top: 40px;
-}
-.sub-section h3 {
-  color: #8b949e;
-  margin-bottom: 15px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 .projects-grid {
   display: grid;
@@ -252,17 +241,16 @@ footer {
 </header>
 <section id="home" class="home">
   <h2>hello! i'm NC970</h2>
-  <h3>ht1 programmer</h3>
-  <p>welcome to my portfolio, some of my projects are listed here, half of this is snca, its from 3 years ago so pretty shit<br></p>
+  <p>this my portfolio, i made this 3 years ago when i was 13 so half of this is either outdated or formatted badly<br></p>
 </section>
 <section id="about" class="about">
   <div class="about-content">
     <img src="about.png" alt="About Me Image">
     <div class="about-text">
       <h2>About Me</h2>
-      <p>im NC970, im a programmer which has worked on some decently large projects, here are some other projects i had MINOR involvement in as a dev:<br><br>
-        <a href="https://www.meteorclient.com" target="_blank" style="color:#58a6ff;text-decoration:underline;">Meteor Client</a>: I created the og merged mixins between Wurst and Meteor, later got added to main branch which made em compatible together.<br><br>
-        <a href="https://github.com/PrismarineJS/mineflayer" target="_blank" style="color:#58a6ff;text-decoration:underline;">Mineflayer</a>: Made easier support for hooking proxies into the bots (like a vpn), also was an integral part in developing mineflayer Pathfinder mineflayer PVP and mineflayer Auto crystal, and a method to hook 2captcha into mineflayer.
+      <p>here are some other projects i had MINOR involvement in as a dev:<br><br>
+        <a href="https://www.meteorclient.com" target="_blank" style="color:#58a6ff;text-decoration:underline;">Meteor Client</a>: I created the older merged mixins between Wurst and Meteor, which made them work together when it was added later on<br><br>
+        <a href="https://github.com/PrismarineJS/mineflayer" target="_blank" style="color:#58a6ff;text-decoration:underline;">Mineflayer</a>: Made easier support for hooking proxies into the bot, also was an integral part in developing mineflayer Pathfinder, and additonal libraries on hooking 2captcha into mineflayer.
       </p>
     </div>
   </div>
@@ -276,25 +264,6 @@ footer {
     <div class="language-box"><h3>Node.js</h3></div>
     <div class="language-box"><h3>Kotlin</h3></div>
   </div>
-
-  <div class="sub-section">
-    <h3>Minecraft Related</h3>
-    <div class="mc-boxes">
-      <div class="mc-box"><h3>Mineflayer (Minecraft)</h3></div>
-      <div class="mc-box"><h3>Folia (Minecraft)</h3></div>
-      <div class="mc-box"><h3>Fabric (Minecraft)</h3></div>
-      <div class="mc-box"><h3>Forge (Minecraft)</h3></div>
-      <div class="mc-box"><h3>Paper (Minecraft)</h3></div>
-    </div>
-  </div>
-
-  <div class="sub-section">
-    <h3>Server Maintenance</h3>
-    <div class="server-boxes">
-      <div class="server-box"><h3>Linux</h3></div>
-      <div class="server-box"><h3>pretty much every other related skill :sob:</h3></div>
-    </div>
-  </div>
 </section>
 <section id="projects" class="projects">
   <h2>Featured Projects</h2>
@@ -306,6 +275,15 @@ footer {
         <p>NetherB0T is a Minecraft bot hosted using Mineflayer, a JavaScript library that interacts with Minecraft. It features over 30 commands and has been used by more than 750,000 unique players across 19 servers throughout its lifetime. Over 1,250 facts have been submitted through its addfact command</p>
       </div>
     </div>
+
+    <div class="project-card">
+      <img src="project2.png" alt="Project 2 Image">
+      <div class="project-card-content">
+        <h3>NSea Client</h3>
+        <p>NSea client was one of the most widely used minecraft hack clients on anarchy servers averaging 200 active users at a time on minecraft, Originally made to automate base hunting and other macroing for spawn projects, it grew into being used for a wide array of utilties</p>
+      </div>
+    </div>
+
     <div class="project-card">
       <img src="project3.png" alt="8b8t.me Image">
       <div class="project-card-content">
@@ -316,7 +294,7 @@ footer {
   </div>
 </section>
 <footer>
-  <p>© 2022 NC970</a></p>
+  <p>© 2022 NC970</p>
 </footer>
 <script>
 const starsContainer = document.querySelector('.stars')
@@ -337,28 +315,6 @@ document.body.addEventListener('mousemove', e => {
   starsContainer.appendChild(star)
   mouseStars.push(star)
   if (mouseStars.length > 15) starsContainer.removeChild(mouseStars.shift())
-  let canvas = document.querySelector('canvas')
-  if (!canvas) {
-    canvas = document.createElement('canvas')
-    canvas.width = window.innerWidth
-    canvas.height = document.body.scrollHeight
-    canvas.style.position = 'absolute'
-    canvas.style.top = '0'
-    canvas.style.left = '0'
-    canvas.style.pointerEvents = 'none'
-    canvas.style.zIndex = '-2'
-    document.body.appendChild(canvas)
-  }
-  const ctx = canvas.getContext('2d')
-  ctx.clearRect(0,0,canvas.width,canvas.height)
-  for (let i = 0; i < mouseStars.length - 1; i++) {
-    ctx.beginPath()
-    ctx.moveTo(parseFloat(mouseStars[i].style.left), parseFloat(mouseStars[i].style.top))
-    ctx.lineTo(parseFloat(mouseStars[i+1].style.left), parseFloat(mouseStars[i+1].style.top))
-    ctx.strokeStyle = 'rgba(88,166,255,0.3)'
-    ctx.lineWidth = 1
-    ctx.stroke()
-  }
 })
 </script>
 </body>
