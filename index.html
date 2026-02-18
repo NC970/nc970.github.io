@@ -3,374 +3,433 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NC970 Portfolio</title>
+<title>NC970</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Rock+Salt&family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    outline: 0;
 }
 
 html {
-  scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+a {
+    color: #cb416b;
+    text-decoration: underline;
+    word-break: break-word;
+}
+
+a:hover {
+    opacity: 0.7;
 }
 
 body {
-  background: radial-gradient(ellipse at bottom, #0d1117 0%, #000 100%);
-  color: #c9d1d9;
-  overflow-x: hidden;
-  position: relative;
+    background: #f5f5ff;
+    overflow-x: hidden;
+    font-family: 'VT323', monospace;
 }
 
-::-webkit-scrollbar {
-  width: 0;
+.page-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 12px;
 }
 
-.stars {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
+.header-bar {
+    background: #fef1f3;
+    border: 1.5px solid #cecdc6;
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    margin-bottom: 8px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.star {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  width: 2px;
-  height: 2px;
-  opacity: .8;
-  animation: twinkle 3s infinite ease-in-out;
+.marquee-track {
+    display: inline-block;
+    animation: marquee 14s linear infinite;
+    font-family: 'VT323', monospace;
+    color: #6e6e6e;
+    font-size: 1.1em;
+    white-space: nowrap;
+    padding-left: 100%;
 }
 
-@keyframes twinkle {
-  0%, 100% { opacity: .2; }
-  50% { opacity: 1; }
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 
-header {
-  background: rgba(22, 27, 34, .95);
-  backdrop-filter: blur(20px);
-  padding: 0;
-  border-bottom: 1px solid rgba(88,166,255,.25);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+.main-card {
+    background: #ffffff;
+    border: 1.5px solid #cecdc6;
+    padding: 14px 16px;
 }
 
-header .bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+.title-band {
+    background: #fef1f3;
+    border: 1.5px solid #cecdc6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 12px;
+    margin-bottom: 16px;
 }
 
-header h1 {
-  font-weight: 700;
-  color: #58a6ff;
-  padding: 14px 8%;
+.title-band .page-name {
+    font-family: 'Rock Salt', cursive;
+    color: #6e6e6e;
+    font-size: 1em;
+    letter-spacing: 0.04em;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 8%;
+.title-band .hate-label {
+    font-family: 'EB Garamond', serif;
+    color: #cb416b;
+    font-size: 1.3em;
+    font-weight: 700;
 }
 
-nav ul li {
-  margin-left: 20px;
+.top-section {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 16px;
 }
 
-nav a {
-  color: #c9d1d9;
-  text-decoration: none;
-  font-weight: 500;
-  transition: .3s;
+.avatar-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-nav a:hover {
-  color: #58a6ff;
+.avatar-wrap {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    animation: spin3d 4s linear infinite;
+    transform-style: preserve-3d;
 }
 
-section {
-  padding: 55px 8%;
-  min-height: 85vh;
-  position: relative;
+@keyframes spin3d {
+    0% { transform: perspective(400px) rotateY(0deg); }
+    100% { transform: perspective(400px) rotateY(360deg); }
 }
 
-.home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #cecdc6;
+    display: block;
 }
 
-.home h2 {
-  font-size: 2.6em;
-  color: #58a6ff;
+.badge {
+    display: inline-block;
+    background: #fef1f3;
+    border: 1.5px solid #cecdc6;
+    color: #cb416b;
+    font-family: 'VT323', monospace;
+    font-size: 0.88em;
+    padding: 4px 8px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    animation: blink 0.9s step-start infinite;
+    max-width: 120px;
+    word-break: break-word;
+    line-height: 1.3;
 }
 
-.home p {
-  margin-top: 18px;
-  max-width: 680px;
-  line-height: 1.45;
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
-.about,
-.projects,
-.languages {
-  background: rgba(22, 27, 34, .6);
-  backdrop-filter: blur(18px);
-  border-radius: 18px;
-  border: 1px solid rgba(88,166,255,.2);
-  margin: 28px auto;
-  box-shadow: 0 0 24px rgba(88,166,255,.05);
+.win {
+    border: 1.5px solid #cb416b;
+    font-family: 'VT323', monospace;
+    font-size: 0.97em;
+    background: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.about {
-  padding: 28px;
-  max-width: 1100px;
+.win:last-child {
+    margin-bottom: 0;
 }
 
-.projects {
-  padding: 30px;
-  max-width: 1150px;
+.win-nav {
+    background: #cb416b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 8px;
+    font-size: 0.95em;
+    user-select: none;
 }
 
-.languages {
-  padding: 18px 20px;
-  max-width: 640px;
-  text-align: center;
+.win-nav .win-dots {
+    display: flex;
+    gap: 5px;
 }
 
-.about-content {
-  display: flex;
-  gap: 22px;
+.win-nav .win-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    display: inline-block;
 }
 
-.about img {
-  width: 190px;
-  height: 190px;
-  border-radius: 10px;
-  border: 2px solid rgba(88,166,255,.3);
-  object-fit: cover;
+.win-body {
+    padding: 8px 12px;
+    color: #444;
+    line-height: 1.8;
+    word-break: break-word;
 }
 
-.about-content h2,
-.languages h2,
-.projects h2 {
-  font-size: 1.8em;
-  color: #58a6ff;
-  margin-bottom: 14px;
+.bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.about-text {
-  flex: 1;
+.project-square {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.about-text p {
-  line-height: 1.45;
+.project-square img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 6px;
+    border: 1px solid #cecdc6;
 }
 
-.language-boxes {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 6px;
+.project-square .win-body {
+    overflow: auto;
 }
 
-.language-box {
-  background: rgba(22, 27, 34, .55);
-  border: 1px solid rgba(88,166,255,.2);
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-size: .85em;
-  transition: .25s;
-}
+@media (max-width: 420px) {
+    .top-section {
+        grid-template-columns: 1fr;
+    }
 
-.language-box h3 {
-  color: #58a6ff;
-  font-weight: 600;
-  font-size: .95em;
-}
+    .avatar-wrap {
+        width: 80px;
+        height: 80px;
+    }
 
-.language-box:hover {
-  transform: translateY(-3px);
-  border-color: #58a6ff;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
-}
-
-.project-card {
-  background: rgba(22,27,34,.55);
-  border-radius: 14px;
-  border: 1px solid rgba(88,166,255,.2);
-  overflow: hidden;
-  transition: .3s;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  border-color: #58a6ff;
-}
-
-.project-card img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-}
-
-.project-card-content {
-  padding: 14px;
-}
-
-.project-card-content h3 {
-  color: #58a6ff;
-  margin-bottom: 6px;
-}
-
-.project-card-content p {
-  font-size: .92em;
-  line-height: 1.45;
-}
-
-footer {
-  background: rgba(22, 27, 34, .95);
-  backdrop-filter: blur(15px);
-  text-align: center;
-  padding: 14px;
-  border-top: 1px solid rgba(88,166,255,.2);
-  color: #8b949e;
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
 
 <body>
+<div class="page-wrapper">
 
-<div class="stars"></div>
+<div class="header-bar">
+    <span class="marquee-track">
+        N &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC970 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC970 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        N &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC970 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC970 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        N &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC970 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        N &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC970 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        N &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC970 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC97 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        NC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+</div>
 
-<header>
-  <div class="bar">
-    <h1>NC970</h1>
+<div class="main-card">
 
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#languages">Languages</a></li>
-        <li><a href="#projects">Projects</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<div class="title-band">
+    <span class="page-name">Benjamin Netanyahu...</span>
+    <span class="hate-label">will you marry me?</span>
+</div>
 
-<section id="home" class="home">
-  <h2>hello! i'm NC970</h2>
-  <p>this my portfolio, i made this 3 years ago when i was 13 so half of this is either outdated or formatted badly<br></p>
-</section>
-
-<section id="about" class="about">
-  <div class="about-content">
-    <img src="about.png" alt="About Me Image">
-
-    <div class="about-text">
-      <h2>About Me</h2>
-
-      <p>here are some other projects i had MINOR involvement in as a dev:<br><br>
-        <a href="https://www.meteorclient.com" target="_blank" style="color:#58a6ff;text-decoration:underline;">Meteor Client</a>: I created the older merged mixins between Wurst and Meteor, which made them work together when it was added later on<br><br>
-        <a href="https://github.com/PrismarineJS/mineflayer" target="_blank" style="color:#58a6ff;text-decoration:underline;">Mineflayer</a>: Made easier support for hooking proxies into the bot, also was an integral part in developing mineflayer Pathfinder, and additonal libraries on hooking 2captcha into mineflayer.
-      </p>
+<div class="top-section">
+    <div class="avatar-col">
+        <div class="avatar-wrap">
+            <img src="avatar.png" alt="avatar" loading="lazy">
+        </div>
+        <div class="badge">
+            ⚐ Hyperborea
+        </div>
     </div>
-  </div>
-</section>
 
-<section id="languages" class="languages">
-  <h2>Languages</h2>
+    <div>
+        <div class="win">
+            <div class="win-nav">
+                <span>about</span>
+                <div class="win-dots"><span></span><span></span></div>
+            </div>
+            <div class="win-body">
+                <p>► (109th) twitter account banned for violent nazism</p>
+                <p>► send me monero 46GGUtirnniPbbQBqFfrBsFmDxUVbZMRfGNNJxtvpvKbdtt7cjrH1Gt7BQkjkvA4fq5zYAyPBCWS89k8z4so6hsH9xHVJuD</p>
+            </div>
+        </div>
 
-  <div class="language-boxes">
-    <div class="language-box"><h3>JavaScript</h3></div>
-    <div class="language-box"><h3>Java</h3></div>
-    <div class="language-box"><h3>Python</h3></div>
-    <div class="language-box"><h3>Node.js</h3></div>
-    <div class="language-box"><h3>Kotlin</h3></div>
-  </div>
-</section>
+        <div class="win">
+            <div class="win-nav">
+                <span>socials</span>
+                <div class="win-dots"><span></span><span></span></div>
+            </div>
+            <div class="win-body">
+                <p>► Discord: neca970</p>
+                <p>► https://namemc.com/profile/OOFFOOFF.1</p>
+                <p>► https://guns.lol/nc970</p>
+                <p>► my github doesn't have enough commits to flex</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-<section id="projects" class="projects">
-  <h2>Featured Projects</h2>
+<div class="bottom-grid">
+    <div class="win">
+        <div class="win-nav">
+            <span>dni</span>
+            <div class="win-dots">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="win-body">
+            <p>► Goyim</p>
+        </div>
+    </div>
+</div>
 
-  <div class="projects-grid">
 
-    <div class="project-card">
-      <img src="project1.png" alt="NetherB0T Image">
+<div class="bottom-grid">
 
-      <div class="project-card-content">
-        <h3>NetherB0T (Owner)</h3>
-        <p>NetherB0T is a Minecraft bot hosted using Mineflayer, a JavaScript library that interacts with Minecraft. It features over 30 commands and has been used by more than 750,000 unique players across 19 servers throughout its lifetime. Over 1,250 facts have been submitted through its addfact command</p>
-      </div>
+    <div class="win project-square">
+        <div class="win-nav">
+            <span>NetherB0T</span>
+            <div class="win-dots"><span></span><span></span></div>
+        </div>
+        <div class="win-body">
+            <img src="project1.png" alt="">
+            NetherB0T is a Minecraft bot hosted using Mineflayer, a JavaScript library that interacts with Minecraft. It features 50+ commands and has been used by more than 1.2 Million unique players <a href="https://netherb0t.github.io/" target="_blank">https://netherb0t.github.io/</a>
+        </div>
     </div>
 
-    <div class="project-card">
-      <img src="project2.png" alt="Project 2 Image">
-
-      <div class="project-card-content">
-        <h3>NSea Client</h3>
-        <p>NSea client was one of the most widely used minecraft hack clients on anarchy servers averaging 200 active users at a time on minecraft, Originally made to automate base hunting and other macroing for spawn projects, it grew into being used for a wide array of utilties</p>
-      </div>
+    <div class="win project-square">
+        <div class="win-nav">
+            <span>NSeaClient</span>
+            <div class="win-dots"><span></span><span></span></div>
+        </div>
+        <div class="win-body">
+            <img src="project2.png" alt="">
+            NSea client was one of the most widely used minecraft hack clients on anarchy servers averaging 200 active users at a time, Originally made to automate macroing, it grew into being used for a wide array of utilties <a href="https://nseaclient.github.io" target="_blank">https://nseaclient.github.io</a>
+        </div>
     </div>
 
-    <div class="project-card">
-      <img src="project3.png" alt="8b8t.me Image">
-
-      <div class="project-card-content">
-        <h3>8b8t.me (Developer)</h3>
-        <p>8b8t is the largest non-vanilla Minecraft anarchy server with no rules. Its 5,000 GB map has been running for over five years, with more than one million unique player joins and an average of 80 concurrent players.<br><br>I developed custom anti-lag plugins to prevent crashes and notify server owners. I also contributed to smaller servers such as 6b6t.ca and 2l2c.org.</p>
-      </div>
+    <div class="win project-square">
+        <div class="win-nav">
+            <span>8b8t</span>
+            <div class="win-dots"><span></span><span></span></div>
+        </div>
+        <div class="win-body">
+            <img src="project3.png" alt="">
+            8b8t.me is the largest non-vanilla Minecraft anarchy server with no rules. Its 5,000 GB map has been running for over five years, with more than one million unique player joins and an average of 80 concurrent players. <a href="https://8b8t.me" target="_blank">https://8b8t.me</a><br>
+        </div>
     </div>
 
-  </div>
-</section>
+    <div class="win project-square">
+        <div class="win-nav">
+            <span>Contributions</span>
+            <div class="win-dots"><span></span><span></span></div>
+        </div>
+<div class="win-body">
+    <a href="https://mineflayer.com" target="_blank">https://mineflayer.com</a>
+    <a href="https://www.meteorclient.com/" target="_blank">https://www.meteorclient.com/</a>
+    <span>https://6b6t.ca (defunct)</span>
+    <span>https://2l2c.org (defunct)</span>
+</div>
 
-<footer>
-  <p>© 2022 NC970</p>
-</footer>
-
-<script>
-const starsContainer = document.querySelector('.stars')
-
-for (let i = 0; i < 150; i++) {
-  const star = document.createElement('div')
-  star.className = 'star'
-  star.style.top = Math.random() * document.body.scrollHeight + 'px'
-  star.style.left = Math.random() * window.innerWidth + 'px'
-  star.style.animationDelay = Math.random() * 3 + 's'
-  starsContainer.appendChild(star)
+<style>
+.win-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+.win-body a, .win-body span {
+    display: block;
+}
+</style>
+    </div>
 
-let mouseStars = []
+</div>
 
-document.body.addEventListener('mousemove', e => {
-  const star = document.createElement('div')
-  star.className = 'star'
-  star.style.top = e.clientY + window.scrollY + 'px'
-  star.style.left = e.clientX + 'px'
-  starsContainer.appendChild(star)
-  mouseStars.push(star)
-
-  if (mouseStars.length > 15) {
-    starsContainer.removeChild(mouseStars.shift())
-  }
-})
-</script>
-
+</div>
+</div>
 </body>
 </html>
