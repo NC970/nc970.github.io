@@ -4,75 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NC970</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=Rock+Salt&family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     outline: 0;
 }
-
-html {
-    -webkit-text-size-adjust: 100%;
-}
-
+html { -webkit-text-size-adjust: 100%; }
 a {
     color: #cb416b;
     text-decoration: underline;
     word-break: break-word;
 }
-
-a:hover {
-    opacity: 0.7;
-}
-
+a:hover { opacity: 0.7; }
 body {
     background: #f5f5ff;
     overflow-x: hidden;
     font-family: 'VT323', monospace;
+    padding-bottom: 44px;
 }
-
 .page-wrapper {
     max-width: 600px;
     margin: 0 auto;
-    padding: 12px;
+    padding: 8px 12px 10px;
 }
-
 .header-bar {
     background: #fef1f3;
     border: 1.5px solid #cecdc6;
-    display: flex;
-    align-items: center;
-    padding: 6px 0;
-    margin-bottom: 8px;
     overflow: hidden;
     white-space: nowrap;
+    margin-bottom: 6px;
 }
-
-.marquee-track {
-    display: inline-block;
-    animation: marquee 14s linear infinite;
+.marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 12s linear infinite;
+}
+.marquee-content { display: flex; }
+.marquee-content span {
+    padding-right: 60px;
     font-family: 'VT323', monospace;
-    color: #6e6e6e;
     font-size: 1.1em;
-    white-space: nowrap;
-    padding-left: 100%;
+    color: #6e6e6e;
 }
-
-@keyframes marquee {
+@keyframes marquee-scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(-50%); }
 }
-
 .main-card {
     background: #ffffff;
     border: 1.5px solid #cecdc6;
-    padding: 14px 16px;
+    padding: 10px 12px;
 }
-
 .title-band {
     background: #fef1f3;
     border: 1.5px solid #cecdc6;
@@ -80,53 +65,50 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 8px;
-    padding: 8px 12px;
-    margin-bottom: 16px;
+    gap: 6px;
+    padding: 6px 10px;
+    margin-bottom: 10px;
 }
-
 .title-band .page-name {
     font-family: 'Rock Salt', cursive;
     color: #6e6e6e;
     font-size: 1em;
     letter-spacing: 0.04em;
 }
-
 .title-band .hate-label {
     font-family: 'EB Garamond', serif;
     color: #cb416b;
     font-size: 1.3em;
     font-weight: 700;
 }
-
 .top-section {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 16px;
+    gap: 12px;
     align-items: start;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
-
 .avatar-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-}
-
-.avatar-wrap {
+    gap: 6px;
     width: 120px;
-    height: 120px;
+}
+.avatar-wrap {
+    width: 110px;
+    height: 110px;
     flex-shrink: 0;
-    animation: spin3d 4s linear infinite;
-    transform-style: preserve-3d;
+    animation: spin3d-full 4s linear infinite;
 }
-
-@keyframes spin3d {
-    0% { transform: perspective(400px) rotateY(0deg); }
-    100% { transform: perspective(400px) rotateY(360deg); }
+@keyframes spin3d-full {
+    0%    { transform: perspective(400px) rotateY(0deg);    filter: invert(0); }
+    24.9% { transform: perspective(400px) rotateY(89.6deg); filter: invert(0); }
+    25%   { transform: perspective(400px) rotateY(90deg);   filter: invert(1); }
+    74.9% { transform: perspective(400px) rotateY(269.6deg);filter: invert(1); }
+    75%   { transform: perspective(400px) rotateY(270deg);  filter: invert(0); }
+    100%  { transform: perspective(400px) rotateY(360deg);  filter: invert(0); }
 }
-
 .avatar-wrap img {
     width: 100%;
     height: 100%;
@@ -134,7 +116,7 @@ body {
     border: 2px solid #cecdc6;
     display: block;
 }
-
+/* BADGE — blinking Hyperborea */
 .badge {
     display: inline-block;
     background: #fef1f3;
@@ -142,108 +124,243 @@ body {
     color: #cb416b;
     font-family: 'VT323', monospace;
     font-size: 0.88em;
-    padding: 4px 8px;
+    padding: 3px 7px;
     letter-spacing: 0.03em;
     text-align: center;
     animation: blink 0.9s step-start infinite;
-    max-width: 120px;
+    width: 100%;
     word-break: break-word;
     line-height: 1.3;
 }
-
 @keyframes blink {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    50%       { opacity: 0; }
 }
-
+/* CLOCK BADGES — same box style, no blink */
+.clock-badge {
+    display: block;
+    background: #fef1f3;
+    border: 1.5px solid #cecdc6;
+    color: #cb416b;
+    font-family: 'VT323', monospace;
+    font-size: 0.88em;
+    padding: 3px 7px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    width: 100%;
+    line-height: 1.3;
+}
+.clock-badge .cb-label {
+    display: block;
+    color: #999;
+    font-size: 0.78em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+.clock-badge .cb-time {
+    display: block;
+    color: #cb416b;
+    font-size: 1.05em;
+    letter-spacing: 0.04em;
+}
+/* WINDOWS */
 .win {
     border: 1.5px solid #cb416b;
     font-family: 'VT323', monospace;
     font-size: 0.97em;
     background: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     display: flex;
     flex-direction: column;
 }
-
-.win:last-child {
-    margin-bottom: 0;
-}
-
+.win:last-child { margin-bottom: 0; }
 .win-nav {
     background: #cb416b;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 3px 8px;
+    padding: 2px 8px;
     font-size: 0.95em;
     user-select: none;
+    cursor: pointer;
 }
-
-.win-nav .win-dots {
-    display: flex;
-    gap: 5px;
-}
-
+.win-nav .win-dots { display: flex; gap: 5px; }
 .win-nav .win-dots span {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255,255,255,0.5);
     display: inline-block;
 }
-
 .win-body {
-    padding: 8px 12px;
+    padding: 6px 10px;
     color: #444;
-    line-height: 1.8;
+    line-height: 1.7;
     word-break: break-word;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
-
+.win-body a, .win-body span { display: block; }
+/* PROJECT GRID */
 .bottom-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 6px;
+    margin-top: 8px;
 }
-
 .project-square {
-    aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
-
 .project-square img {
     width: 100%;
     height: auto;
     object-fit: contain;
-    margin-bottom: 6px;
     border: 1px solid #cecdc6;
+    display: block;
+    flex-shrink: 0;
 }
-
 .project-square .win-body {
-    overflow: auto;
+    overflow: hidden;
+    line-height: 1.2;
+    font-size: 0.8em;
+    gap: 1px;
+    padding: 3px 6px;
+    flex: 1;
 }
-
+/* TASKBAR */
+.taskbar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: #e8e0e4;
+    border-top: 2px solid #cecdc6;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    gap: 6px;
+    z-index: 9999;
+    font-family: 'VT323', monospace;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.08);
+}
+.taskbar-start {
+    background: #cb416b;
+    color: #fff;
+    border: 1.5px solid #a03050;
+    padding: 2px 10px;
+    font-family: 'Rock Salt', cursive;
+    font-size: 0.65em;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    user-select: none;
+}
+.taskbar-start:hover { background: #a03050; }
+.taskbar-divider {
+    width: 1.5px;
+    height: 24px;
+    background: #cecdc6;
+    flex-shrink: 0;
+}
+.taskbar-tasks {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+    overflow: hidden;
+}
+.taskbar-task {
+    background: #fef1f3;
+    border: 1.5px solid #cecdc6;
+    color: #6e6e6e;
+    padding: 2px 8px;
+    font-size: 0.95em;
+    cursor: pointer;
+    white-space: nowrap;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'VT323', monospace;
+    flex-shrink: 0;
+}
+.taskbar-task:hover { background: #cb416b; color: #fff; border-color: #cb416b; }
+.taskbar-task.active { background: #fff; border-color: #cb416b; color: #cb416b; }
+.taskbar-clock {
+    background: #fef1f3;
+    border: 1.5px solid #cecdc6;
+    color: #444;
+    padding: 2px 8px;
+    font-size: 1.1em;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+/* START MENU */
+.start-menu {
+    position: fixed;
+    bottom: 42px;
+    left: 6px;
+    width: 180px;
+    background: #fef1f3;
+    border: 1.5px solid #cecdc6;
+    z-index: 10000;
+    display: none;
+    flex-direction: column;
+    font-family: 'VT323', monospace;
+    box-shadow: 2px -2px 8px rgba(0,0,0,0.1);
+}
+.start-menu.open { display: flex; }
+.start-menu-header {
+    background: #cb416b;
+    color: #fff;
+    padding: 4px 10px;
+    font-family: 'Rock Salt', cursive;
+    font-size: 0.65em;
+    letter-spacing: 0.05em;
+}
+.start-menu-item {
+    padding: 5px 12px;
+    color: #444;
+    font-size: 1em;
+    cursor: pointer;
+    border-bottom: 1px solid #e8e0e4;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+}
+.start-menu-item:hover { background: #cb416b; color: #fff; }
+.start-menu-item:last-child { border-bottom: none; }
 @media (max-width: 420px) {
-    .top-section {
-        grid-template-columns: 1fr;
-    }
-
-    .avatar-wrap {
-        width: 80px;
-        height: 80px;
-    }
-
-    .bottom-grid {
-        grid-template-columns: 1fr;
-    }
+    .top-section { grid-template-columns: 1fr; }
+    .avatar-wrap { width: 80px; height: 80px; }
+    .bottom-grid { grid-template-columns: 1fr; }
+    .taskbar-tasks { display: none; }
 }
 </style>
 </head>
-
 <body>
+
+<div class="start-menu" id="startMenu">
+    <div class="start-menu-header">NC970</div>
+    <a class="start-menu-item" href="#about">► about</a>
+    <a class="start-menu-item" href="#socials">► socials</a>
+    <a class="start-menu-item" href="#projects">► projects</a>
+    <a class="start-menu-item" href="https://netherb0t.github.io/" target="_blank">► NetherB0T</a>
+    <a class="start-menu-item" href="https://8b8t.me" target="_blank">► 8b8t.me</a>
+</div>
+
 <div class="page-wrapper">
 
 <div class="header-bar">
@@ -265,134 +382,163 @@ body {
 
 <div class="main-card">
 
-<div class="title-band">
-    <span class="page-name">Benjamin Netanyahu...</span>
-    <span class="hate-label">will you marry me?</span>
-</div>
+    <div class="title-band">
+        <span class="page-name">Benjamin Netanyahu...</span>
+        <span class="hate-label">will you marry me?</span>
+    </div>
 
-<div class="top-section">
-    <div class="avatar-col">
-        <div class="avatar-wrap">
-            <img src="avatar.png" alt="avatar" loading="lazy">
+    <div class="top-section">
+        <div class="avatar-col">
+            <div class="avatar-wrap">
+                <img src="avatar.png" alt="avatar" loading="lazy">
+            </div>
+            <div class="badge">⚐ Hyperborea</div>
+            <div class="clock-badge">
+                <span class="cb-label">my time</span>
+                <span class="cb-time" id="myClock">--:--:--</span>
+            </div>
+            <div class="clock-badge">
+                <span class="cb-label" id="yourLabel">your time</span>
+                <span class="cb-time" id="yourClock">--:--:--</span>
+            </div>
         </div>
-        <div class="badge">
-            ⚐ Hyperborea
+
+        <div>
+            <div class="win" id="about">
+                <div class="win-nav">
+                    <span>about</span>
+                    <div class="win-dots"><span></span><span></span></div>
+                </div>
+                <div class="win-body">
+                    <p>► (109th) twitter account banned kek</p>
+                    <p>► send me monero 46GGUtirnniPbbQBqFfrBsFmDxUVbZMRfGNNJxtvpvKbdtt7cjrH1Gt7BQkjkvA4fq5zYAyPBCWS89k8z4so6hsH9xHVJuD</p>
+                </div>
+            </div>
+
+            <div class="win" id="socials">
+                <div class="win-nav">
+                    <span>socials</span>
+                    <div class="win-dots"><span></span><span></span></div>
+                </div>
+                <div class="win-body">
+                    <p>► Discord: neca970</p>
+                    <p>► https://namemc.com/profile/OOFFOOFF.1</p>
+                    <p>► https://guns.lol/nc970</p>
+                    <p>► my github doesn't have enough commits to flex</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div>
-        <div class="win">
+    <div class="bottom-grid" id="projects">
+
+        <div class="win project-square">
             <div class="win-nav">
-                <span>about</span>
+                <span>NetherB0T</span>
                 <div class="win-dots"><span></span><span></span></div>
             </div>
             <div class="win-body">
-                <p>► (109th) twitter account banned kek</p>
-                <p>► send me monero 46GGUtirnniPbbQBqFfrBsFmDxUVbZMRfGNNJxtvpvKbdtt7cjrH1Gt7BQkjkvA4fq5zYAyPBCWS89k8z4so6hsH9xHVJuD</p>
+                <img src="project1.png" alt="">
+                NetherB0T is a Minecraft bot hosted using Mineflayer, a JavaScript library that interacts with Minecraft. It features 50+ commands and has been used by more than 1.2 Million unique players <a href="https://netherb0t.github.io/" target="_blank">https://netherb0t.github.io/</a>
             </div>
         </div>
 
-        <div class="win">
+        <div class="win project-square">
             <div class="win-nav">
-                <span>socials</span>
+                <span>NSeaClient</span>
                 <div class="win-dots"><span></span><span></span></div>
             </div>
             <div class="win-body">
-                <p>► Discord: neca970</p>
-                <p>► https://namemc.com/profile/OOFFOOFF.1</p>
-                <p>► https://guns.lol/nc970</p>
-                <p>► my github doesn't have enough commits to flex</p>
+                <img src="project2.png" alt="">
+                NSea client was one of the most widely used minecraft hack clients on anarchy servers averaging 200 active users at a time, Originally made to automate macroing, it grew into being used for a wide array of utilties <a href="https://nseaclient.github.io" target="_blank">https://nseaclient.github.io</a>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="bottom-grid">
-    <div class="win">
-        <div class="win-nav">
-            <span>dni</span>
-            <div class="win-dots">
-                <span></span>
-                <span></span>
+        <div class="win project-square">
+            <div class="win-nav">
+                <span>8b8t</span>
+                <div class="win-dots"><span></span><span></span></div>
+            </div>
+            <div class="win-body">
+                <img src="project3.png" alt="">
+                8b8t.me is the largest non-vanilla Minecraft anarchy server with no rules. Its 5,000 GB map has been running for over five years, with more than one million unique player joins and an average of 80 concurrent players. <a href="https://8b8t.me" target="_blank">https://8b8t.me</a>
             </div>
         </div>
-        <div class="win-body">
-            <p>► todo later</p>
-        </div>
-    </div>
-</div>
 
+        <div class="win project-square">
+            <div class="win-nav">
+                <span>Contributions</span>
+                <div class="win-dots"><span></span><span></span></div>
+            </div>
+            <div class="win-body">
+                <a href="https://mineflayer.com" target="_blank">https://mineflayer.com</a>
+                <a href="https://www.meteorclient.com/" target="_blank">https://www.meteorclient.com/</a>
+                <span>https://6b6t.ca (defunct)</span>
+                <span>https://2l2c.org (defunct)</span>
+            </div>
+        </div>
 
-<div class="bottom-grid">
-
-    <div class="win project-square">
-        <div class="win-nav">
-            <span>NetherB0T</span>
-            <div class="win-dots"><span></span><span></span></div>
-        </div>
-        <div class="win-body">
-            <img src="project1.png" alt="">
-            NetherB0T is a Minecraft bot hosted using Mineflayer, a JavaScript library that interacts with Minecraft. It features 50+ commands and has been used by more than 1.2 Million unique players <a href="https://netherb0t.github.io/" target="_blank">https://netherb0t.github.io/</a>
-        </div>
-    </div>
-
-    <div class="win project-square">
-        <div class="win-nav">
-            <span>NSeaClient</span>
-            <div class="win-dots"><span></span><span></span></div>
-        </div>
-        <div class="win-body">
-            <img src="project2.png" alt="">
-            NSea client was one of the most widely used minecraft hack clients on anarchy servers averaging 200 active users at a time, Originally made to automate macroing, it grew into being used for a wide array of utilties <a href="https://nseaclient.github.io" target="_blank">https://nseaclient.github.io</a>
-        </div>
-    </div>
-
-    <div class="win project-square">
-        <div class="win-nav">
-            <span>8b8t</span>
-            <div class="win-dots"><span></span><span></span></div>
-        </div>
-        <div class="win-body">
-            <img src="project3.png" alt="">
-            8b8t.me is the largest non-vanilla Minecraft anarchy server with no rules. Its 5,000 GB map has been running for over five years, with more than one million unique player joins and an average of 80 concurrent players. <a href="https://8b8t.me" target="_blank">https://8b8t.me</a><br>
-        </div>
-    </div>
-
-    <div class="win project-square">
-        <div class="win-nav">
-            <span>Contributions</span>
-            <div class="win-dots"><span></span><span></span></div>
-        </div>
-<div class="win-body">
-    <a href="https://mineflayer.com" target="_blank">https://mineflayer.com</a>
-    <a href="https://www.meteorclient.com/" target="_blank">https://www.meteorclient.com/</a>
-    <span>https://6b6t.ca (defunct)</span>
-    <span>https://2l2c.org (defunct)</span>
-</div>
-
-<style>
-.win-body {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.win-body a, .win-body span {
-    display: block;
-}
-</style>
     </div>
 
 </div>
+</div>
 
+<div class="taskbar">
+    <button class="taskbar-start" id="startBtn">
+        <i class="fas fa-th-large" style="font-size:0.9em;"></i> Start
+    </button>
+    <div class="taskbar-divider"></div>
+    <div class="taskbar-tasks">
+        <div class="taskbar-task active" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">► about</div>
+        <div class="taskbar-task" onclick="document.getElementById('socials').scrollIntoView({behavior:'smooth'})">► socials</div>
+        <div class="taskbar-task" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">► projects</div>
+    </div>
+    <div class="taskbar-divider"></div>
+    <div class="taskbar-clock" id="taskbarClock">--:--</div>
 </div>
-</div>
-</body>
-</html>
+
 <script>
 document.querySelectorAll('.win-nav').forEach(nav => {
     nav.addEventListener('click', () => {
         const body = nav.parentElement.querySelector('.win-body');
-        body.style.display = body.style.display === 'none' ? 'block' : 'none';
+        if (body) body.style.display = body.style.display === 'none' ? '' : 'none';
     });
 });
+
+const startBtn  = document.getElementById('startBtn');
+const startMenu = document.getElementById('startMenu');
+startBtn.addEventListener('click', e => { e.stopPropagation(); startMenu.classList.toggle('open'); });
+document.addEventListener('click', e => { if (!startMenu.contains(e.target)) startMenu.classList.remove('open'); });
+startMenu.querySelectorAll('.start-menu-item').forEach(i => i.addEventListener('click', () => startMenu.classList.remove('open')));
+
+const MY_TZ     = 'America/Cayman';
+const visitorTZ = (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local'; } catch(e) { return 'Local'; } })();
+const myClock   = document.getElementById('myClock');
+const yourClock = document.getElementById('yourClock');
+const yourLabel = document.getElementById('yourLabel');
+const tbClock   = document.getElementById('taskbarClock');
+
+if (yourLabel) {
+    const shortTZ = visitorTZ.split('/').pop().replace(/_/g,' ');
+    yourLabel.textContent = 'your time (' + shortTZ.toLowerCase() + ')';
+}
+
+function fmt(d, tz) {
+    try { return d.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }); }
+    catch(e) { return '--:--:--'; }
+}
+function fmtShort(d, tz) {
+    try { return d.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false }); }
+    catch(e) { return '--:--'; }
+}
+function tick() {
+    const now = new Date();
+    if (myClock)   myClock.textContent   = fmt(now, MY_TZ);
+    if (yourClock) yourClock.textContent = fmt(now, visitorTZ);
+    if (tbClock)   tbClock.textContent   = fmtShort(now, MY_TZ);
+}
+tick();
+setInterval(tick, 1000);
 </script>
+</body>
+</html>
